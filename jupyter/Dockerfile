@@ -21,7 +21,7 @@ USER root
 #    rm -rf /var/lib/apt/lists/*
 
 # Instale as bibliotecas Python necessárias
-RUN pip install --no-cache-dir --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org -r requirements.txt
+RUN pip install --no-cache-dir --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org pandas pymongo boto3
 #pyspark==${SPARK_VERSION}
 
 RUN echo "jovyan ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/jovyan
