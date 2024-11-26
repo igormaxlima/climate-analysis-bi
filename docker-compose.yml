@@ -1,0 +1,67 @@
+version: '3.3'
+
+services:
+  jupyter:
+    build:
+      context: ./jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./jupyter/notebooks:/home/jovyan/work
+      - ./jupyter/data:/home/jovyan/data
+      - ./jupyter/config:/home/jovyan/.jupyter
+    networks:
+      - climate
+  
+  streamlit-app:
+    build:
+      context: ./streamlit  
+    ports:
+      - "8501:8501"  
+    volumes:
+      - ./streamlit/app:/app
+    networks:
+      - climate
+
+  mongo:
+    image: mongo:4.4-bionic
+    container_name: mongo_service
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - climate
+    volumes:
+      - ./mongodb/dbdata:/data/db
+
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    volumes:
+      - minio-data:/data
+    command: server /data --console-address ":9001"
+    networks:
+      - climate
+
+networks:
+  climate: 
+    driver: bridge
+
+volumes:
+  notebooks:
+  data:
+  config:  
+  dbdata:
+  minio-data:
+  
+  
+
+

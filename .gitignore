@@ -1,0 +1,16 @@
+# Ignorar volumes locais do Docker
+*.log
+*.pid
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+volumes/
+*.swp
+*.swo
+*.DS_Store
+
+# Ignorar configurações específicas do Jupyter
+jupyter/config/
+jupyter/data/
+mongo-data/
+minio-data/
