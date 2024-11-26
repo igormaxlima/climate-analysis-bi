@@ -12,5 +12,6 @@ volumes/
 # Ignorar configurações específicas do Jupyter
 jupyter/config/
 jupyter/data/
-mongo-data/
+jupyter/notebooks/.ipynb_checkpoints
+mongodb/
 minio-data/
