@@ -7,6 +7,8 @@ FROM jupyter/base-notebook:latest
 #    SPARK_HOME=/usr/local/spark \
 #    PATH=$SPARK_HOME/bin:$PATH
 
+COPY requirements.txt requirements.txt
+
 # Altera para o usuário root para instalar as dependências
 USER root
 
@@ -21,7 +23,7 @@ USER root
 #    rm -rf /var/lib/apt/lists/*
 
 # Instale as bibliotecas Python necessárias
-RUN pip install --no-cache-dir --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org pandas pymongo boto3
+RUN pip install --no-cache-dir --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org -r requirements.txt
 #pyspark==${SPARK_VERSION}
 
 RUN echo "jovyan ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/jovyan

@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir --trusted-host pypi.org --trusted-host pypi.pytho
 EXPOSE 8501
 
 # Copie o arquivo app.py para o diretório de trabalho
-COPY app.py .
+COPY /app/app.py .
 
 # Comando para iniciar o aplicativo Streamlit
 CMD ["streamlit", "run", "app.py"]
