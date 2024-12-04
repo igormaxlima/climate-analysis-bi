@@ -56,7 +56,15 @@ cd climate-analysis-bi
 
 2. Faça o mesmo no arquivo `app.py` para garantir que a aplicação conecte corretamente aos serviços.
 
-### 6. Acesse o Dashboard
+### 6. Executar os Notebooks
+
+Execute os notebooks na seguinte ordem:
+
+1. `minio-initial-configs.ipynb`
+2. `tratamento.ipynb`
+3. `to-MongoDB.ipynb`
+   
+### 7. Acesse o Dashboard
 1. Abra o navegador e acesse o dashboard no endereço:
    ```text
    http://localhost:8501/
